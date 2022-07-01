@@ -397,6 +397,8 @@ class BIDSLayoutIndexer:
 
             # Files with IntendedFor field always get mapped to targets
             intended = listify(file_md.get('IntendedFor', []))
+            intended = list() if not intended else intended
+
             for target in intended:
                 # Per spec, IntendedFor paths are relative to sub dir.
                 target = self._layout._root.joinpath(
